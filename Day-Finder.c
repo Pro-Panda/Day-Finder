@@ -1,6 +1,6 @@
 //Warning! This is a horror. I knew little programming practices while writing this.
 //Pro-Panda
-//My first actual C-Program
+//My first actual C-Program made in 8th-9th grade.
 
 #include <stdio.h>
 #include <time.h>
@@ -13,6 +13,13 @@ int YEAR_CODES[4] = {0, 5, 3, 1};
 char INVALID_MSG[35] = "Invalid Date. Please try again.";
 char DAYS[7][10] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
+int date, year, month;
+int year_code, month_code, part_a, part_b;
+int year_last_2, year_first_2;
+int answer;
+int leap;
+int retry;
+
 int leap_check(int year){
         if(year%4!=0)
                 return 0;
@@ -21,14 +28,23 @@ int leap_check(int year){
         return 0;
 }
 
+int test()
+{
+        printf("The value of date is %d",date);
+        printf("The value of year is %d",year);
+        printf("The value of month is %d",month);
+        printf("The value of year_code is %d",year_code);
+        printf("The value of month_code is %d",month_code);
+        printf("The value of part_a is %d",part_a);
+        printf("The value of part_b is %d",part_b);
+        printf("The value of leap is %d",leap);
+        printf("The value of year_first_2 is %d",year_first_2);
+        printf("The value of year_last_2 is %d",year_last_2);
+        printf("The value of answer is %d",answer);
+}
+
 int main()
 {
-        int date, year, month;
-        int year_code, month_code, part_a, part_b;
-        int year_last_2, year_first_2;
-        int answer;
-        int leap;
-        int retry;
         printf("\n\t\t\tCalender Day Finder\n");
         redate:
         printf("\nPlease type the Date (dd-mm-yyyy):\n");
@@ -63,6 +79,7 @@ int main()
         }
         answer = (part_a + part_b + month_code + year_code + date) % 7;
         printf("It is %s\n",DAYS[answer]);
+        test();
         printf("\nEnter 1 to retry.\nAnything else to exit\n");
         scanf("%d", &retry);
         if (retry == 1)
