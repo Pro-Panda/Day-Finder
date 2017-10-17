@@ -12,6 +12,7 @@ int MONTH_CODES_LEAP[12] = {5, 1, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
 int YEAR_CODES[4] = {0, 5, 3, 1};
 char INVALID_MSG[35] = "Invalid Date. Please try again.";
 char DAYS[7][10] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
 int leap_check(int year){
         if(year%4!=0)
                 return 0;
@@ -19,24 +20,20 @@ int leap_check(int year){
                 return 1;
         return 0;
 }
+
 int main()
 {
         int date, year, month;
         int year_code, month_code;
         int year_last_2, year_first_2;
         int sum_codes, answer;
-        int loop_counter;
         int part_a, part_b;
         int leap;
         printf("\n\t\t\tCalender Day Finder\n");
         printf("\t\t\t\t\t\tDeveloped by Rahul Bothra\n");
         redate:
-        printf("\nPlease type the Date (dd):\n");
-        scanf("%d", &date);
-        printf("Please type the year: (yyyy)\n");
-        scanf("%d", &year);
-        printf("Please type the month no.(m or mm)");
-        scanf("%d", &month);
+        printf("\nPlease type the Date (dd-mm-yyyy):\n");
+        scanf("%d-%d-%d", &date,&month,&year);
         year_first_2 = year/100;
         year_code = YEAR_CODES[year_first_2%4];
         year_last_2 = year%100;
@@ -50,7 +47,7 @@ int main()
         if (leap)
         {
                 month_code = MONTH_CODES_LEAP[month];
-                if (date>MONTH_DATES_LEAP[month])
+                if (date>MONTH_DATES_LEAP[month] || date<0)
                 {
                         printf("%s", INVALID_MSG);
                         goto redate;              
@@ -59,65 +56,21 @@ int main()
         else
         {
                 month_code = MONTH_CODES[month];
-                if (date>MONTH_DATES[month])
+                if (date>MONTH_DATES[month] || date<0)
                 {
                         printf("%s", INVALID_MSG);
                         goto redate;              
                 }
         }
-
         sum_codes = part_a + part_b + month_code + year_code + date;
         answer = sum_codes % 7;
         printf("It is %s\n",DAYS[answer]);
-
-        if ((date == 2) && (month == 10))
-                printf("This is Gandhi Jayanti.");
-        else if ((date == 15) && (month == 8))
-                printf("This is India's Independence Day.\n");
-        else if ((date == 25) && (month == 12))
-                printf("This is Christmas.\n");
-        else if ((date == 14) && (month == 1))
-                printf("This is Makar Sakranti.\n");
-        else if ((date == 26) && (month == 1))
-                printf("This is India's Republic Day\n");
-        else if ((date == 1) && (month == 5))
-                printf("This is May Day.\n");
-        else if ((date == 5) && (month == 6))
-                printf("This is Rahul Bothra's Birthday.\n");
-        else
-        {
-        }
-
-ad:
+        ad:
         int m;
-        printf("\nPress 1 to find another day.\nPress 2 to exit\n");
+        printf("\nEnter 1 to retry.\nAnything else to exit\n");
         scanf("%d", &m);
         if (m == 1)
         {
-                goto lp;
-        }
-        else if (m == 2)
-        {
-                printf("Are you sure you want to Exit?\nPress y to confirm or n to go back.\n");
-        mp:
-                char o;
-                scanf("%s", &o);
-                switch (o)
-                {
-                case 'y':
-                        printf("Well, Goodbye.");
-                        break;
-                case 'n':
-                        goto lp;
-                        break;
-                default:
-                        printf("\nWrong choice.\nPlease try again.\n");
-                        goto mp;
-                }
-        }
-        else
-        {
-                printf("Wrong Choice. Please Try Again");
-                goto ad;
+                goto redate;
         }
 }
