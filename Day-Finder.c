@@ -45,8 +45,8 @@ int main()
         }
         if (leap)
         {
-                month_code = MONTH_CODES_LEAP[month];
-                if (date>MONTH_DATES_LEAP[month] || date<0)
+                month_code = MONTH_CODES_LEAP[month-1];
+                if (date>MONTH_DATES_LEAP[month-1] || date<0)
                 {
                         printf("%s", INVALID_MSG);
                         goto redate;              
@@ -54,8 +54,8 @@ int main()
         }
         else
         {
-                month_code = MONTH_CODES[month];
-                if (date>MONTH_DATES[month] || date<0)
+                month_code = MONTH_CODES[month-1];
+                if (date>MONTH_DATES[month-1] || date<0)
                 {
                         printf("%s", INVALID_MSG);
                         goto redate;              
