@@ -24,13 +24,12 @@ int leap_check(int year){
 int main()
 {
         int date, year, month;
-        int year_code, month_code;
+        int year_code, month_code, part_a, part_b;
         int year_last_2, year_first_2;
-        int sum_codes, answer;
-        int part_a, part_b;
+        int answer;
         int leap;
+        int retry;
         printf("\n\t\t\tCalender Day Finder\n");
-        printf("\t\t\t\t\t\tDeveloped by Rahul Bothra\n");
         redate:
         printf("\nPlease type the Date (dd-mm-yyyy):\n");
         scanf("%d-%d-%d", &date,&month,&year);
@@ -62,14 +61,11 @@ int main()
                         goto redate;              
                 }
         }
-        sum_codes = part_a + part_b + month_code + year_code + date;
-        answer = sum_codes % 7;
+        answer = (part_a + part_b + month_code + year_code + date) % 7;
         printf("It is %s\n",DAYS[answer]);
-        ad:
-        int m;
         printf("\nEnter 1 to retry.\nAnything else to exit\n");
-        scanf("%d", &m);
-        if (m == 1)
+        scanf("%d", &retry);
+        if (retry == 1)
         {
                 goto redate;
         }
