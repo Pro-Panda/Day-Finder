@@ -19,19 +19,19 @@ int leap_check(int year){
     return 0;
 }
 
-int test()
+int test_print()
 {
-        printf("The value of date is %d\n",date);
-        printf("The value of year is %d\n",year);
-        printf("The value of month is %d\n",month);
-        printf("The value of year_code is %d\n",year_code);
-        printf("The value of month_code is %d\n",month_code);
-        printf("The value of part_a is %d\n",part_a);
-        printf("The value of part_b is %d\n",part_b);
-        printf("The value of leap is %d\n",leap);
-        printf("The value of year_first_2 is %d\n",year_first_2);
-        printf("The value of year_last_2 is %d\n",year_last_2);
-        printf("The value of answer is %d\n",answer);
+        printf("date: %d\n",date);
+        printf("year: %d\n",year);
+        printf("month: %d\n",month);
+        printf("year_code: %d\n",year_code);
+        printf("month_code: %d\n",month_code);
+        printf("part_a: %d\n",part_a);
+        printf("part_b: %d\n",part_b);
+        printf("leap: %d\n",leap);
+        printf("year_first_2: %d\n",year_first_2);
+        printf("year_last_2: %d\n",year_last_2);
+        printf("answer: %d\n",answer);
 }
 
 int get_day(int date, int month, int year){
